@@ -1,0 +1,56 @@
+<modification>
+
+	<id>newsletter menu</id>
+	<version>1.0.0</version>
+	<vqmver>2.1.5</vqmver>
+	<author>ducquyen.it4t@gmail.com</author>
+	
+		
+	<file name="admin/language/*/common/header.php">
+		<operation>
+			<search position="before"><![CDATA[$_['text_product']]]></search>
+			<add><![CDATA[
+			$_['text_newsletter']                       = 'Bản tin';
+			$_['text_newsletter_category']                     = 'Danh mục bản tin';
+			$_['text_newsletter_sendmail']                     = 'Gởi mail';
+			$_['text_newsletter_detail']                     = 'Thống kê';
+			]]></add>
+		</operation>		
+	</file>	
+	
+	<file name="admin/controller/common/header.php">
+		<operation>
+			<search position="after"><![CDATA[$this->data['text_product'] = $this->language->get('text_product');]]></search>
+			<add><![CDATA[
+			$this->data['text_newsletter'] = $this->language->get('text_newsletter');
+			$this->data['text_newsletter_category'] = $this->language->get('text_newsletter_category');
+			$this->data['text_newsletter_sendmail'] = $this->language->get('text_newsletter_sendmail');
+			$this->data['text_newsletter_detail'] = $this->language->get('text_newsletter_detail');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[$this->data['product'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'], 'SSL');]]></search>
+			<add><![CDATA[
+			$this->data['newsletter'] = $this->url->link('catalog/newsletter', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['newsletter_category'] = $this->url->link('catalog/newsletter_category', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['newsletter_sendmail'] = $this->url->link('catalog/newsletter_sendmail', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['newsletter_detail'] = $this->url->link('catalog/newsletter/detail', 'token=' . $this->session->data['token'], 'SSL');
+			]]></add>
+		</operation>		
+	</file>	
+	
+	<file name="admin/view/template/common/header.tpl">
+		<operation>
+			<search position="before"><![CDATA[<li id="system"><a class="top"><?php echo $text_system; ?></a>]]></search>
+			<add><![CDATA[<li id="newsletter"><a class="top"><?php echo $text_newsletter; ?></a>
+			<ul>			
+			<li><a href="<?php echo $newsletter; ?>"><?php echo $text_newsletter; ?></a></li>
+			<li><a href="<?php echo $newsletter_detail; ?>"><?php echo $text_newsletter_detail; ?></a></li>
+			<li><a href="<?php echo $newsletter_sendmail; ?>"><?php echo $text_newsletter_sendmail; ?></a></li>
+			</ul>
+			</li>]]></add>
+		</operation>		
+	</file>	
+	
+</modification>
+

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+    <id>Replace Old Code</id>
+    <version>1</version>
+    <vqmver>2.3.2</vqmver>
+    <author>codek365@gmail.com</author>
+
+        <file name="catalog/view/theme/*/*/product/*.tpl">
+            <operation>
+                <search position="before"><![CDATA[  <div class="product-filter">
+                ]]></search>
+
+                <add><![CDATA[<!--]]></add>
+            </operation>
+            <operation>
+                <search position="before"><![CDATA[  <div class="product-list">
+                ]]></search>
+
+                <add><![CDATA[--><div class="product-filter"></div>]]></add>
+            </operation>
+        </file> 
+    </modification>

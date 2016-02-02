@@ -1,0 +1,15 @@
+array(
+    'driver'        => 'FTP',
+    'host'          => '118.69.63.110',
+    'user'          => 'bkman',
+    'pass'          => 'vietfun',
+    'port'          => 21,
+    'mode'          => 'passive',
+    'path'          => '/',
+    'timeout'       => 10,
+    'owner'         => true,
+    'tmbPath'       => '',
+    'tmpPath'       => '',
+    'dirMode'       => 0777,
+    'fileMode'      => 0644
+)

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+    <id>Canonical</id>
+    <version>1</version>
+    <vqmver>2.3.2</vqmver>
+    <author>codek365@gmail.com</author>
+
+        <file name="catalog/view/theme/TAL_vf/template/common/header.tpl">
+            <operation>
+                <search position="after" ><![CDATA[<meta name="author"
+                ]]></search>
+                <add><![CDATA[<?php 
+if (strpos($_SERVER['SERVER_NAME'],'vietfuntravel.com.vn') !== false) {
+  if (strpos($_SERVER['REQUEST_URI'],'tour-du-lich-tet-nguyen-dan') !== false) {
+     echo '<link href="http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'].'" rel="canonical" />';
+  } 
+}?>]]></add>
+            </operation>           
+        </file> 
+    </modification>

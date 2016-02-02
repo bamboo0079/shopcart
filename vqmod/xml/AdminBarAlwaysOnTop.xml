@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+    <id>Admin bar - always on top</id>
+    <version>1</version>
+    <vqmver>2.3.2</vqmver>
+    <author>Tymoteusz Lesniak (tymoteusz.lesniak@gmail.com)</author>
+    <file name="admin/view/template/common/footer.tpl">
+        <operation>
+            <search position="before"><![CDATA[
+               </body></html>
+                ]]></search>
+            <add><![CDATA[
+                <script type="text/javascript">
+                    var startPosition = 130;
+                    $(window).scroll(function() {
+                       if($(window).scrollTop() > startPosition) {
+                            width = $('.box div.heading').width();
+                            height = $('.box div.heading').height();
+                           $('.box div.heading').css('position', 'fixed').css('top',0).css('width',width).css('border-radius','0px').css('z-index','2');
+                           $('.box div.content').css('margin-top', height+20);
+                       } else {
+                        $('.box div.heading').removeAttr('style');
+                        $('.box div.content').removeAttr('style');
+                       }
+                    });
+                </script>
+            ]]></add>
+        </operation>
+    </file>
+</modification>

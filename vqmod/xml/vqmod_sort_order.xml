@@ -1,0 +1,110 @@
+<modification>
+	<id>Sort Order</id>
+	<version>1.0</version>
+	<vqmver>2.3.0</vqmver>
+	<author>Trần Minh Banana</author>
+	<file name="admin/controller/catalog/category.php">
+		<operation error="abort">
+			<search position="before"><![CDATA[$this->load->model('design/layout');]]></search>
+			<add><![CDATA[if (isset($this->request->post['tag_products'])) {
+		$this->data['tag_products'] = $this->request->post['tag_products'];
+		} elseif (isset($this->request->get['category_id'])) {
+			$this->data['tag_products'] = $this->model_catalog_category->getCateProduct($this->request->get['category_id']);
+			$this->data['products_tag'] = $this->model_catalog_category->getProductCate2($this->request->get['category_id']);
+			foreach($this->data['tag_products'] as $key => $value){
+				foreach($this->data['products_tag'] as $k => $v){
+					if($value['product_id'] == $v['product_id']){
+						$this->data['tag_products'][$key]['sort_order'] = $v['sort_order'];
+					}
+				}
+			}
+		} else {
+			$this->data['tag_products'] = array();
+		}]]></add>
+		</operation>
+	</file>
+	<file name="admin/model/catalog/category.php">
+		<operation error="abort">
+			<search position="before"><![CDATA[public function getKeyWordTag($id){]]></search>
+			<add><![CDATA[public function getCateProduct($id){
+        $query = $this->db->query("SELECT cp.category_id,pd.name, cp.product_id, p.model, cp.sort_order FROM " . DB_PREFIX . "product_to_category cp LEFT JOIN " . DB_PREFIX . "product_description pd ON (cp.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "product p ON (cp.product_id = p.product_id)  WHERE cp.category_id = '" . (int)$id . "' AND p.status='1' ORDER BY cp.sort_order");
+        return $query->rows;
+    }
+    public function getProductCate2($id){
+        $query = $this->db->query("SELECT cp.category_id,pd.name, cp.product_id, p.model, cp.sort_order FROM " . DB_PREFIX . "category_to_product cp LEFT JOIN " . DB_PREFIX . "product_description pd ON (cp.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "product p ON (cp.product_id = p.product_id)  WHERE cp.category_id = '" . (int)$id . "' AND p.status='1' ORDER BY cp.sort_order");
+        return $query->rows;
+    }]]></add>
+		</operation>
+	</file>
+	<file name="admin/model/catalog/category.php">
+		<operation error="abort">
+			<search position="after"><![CDATA[public function editCategory($category_id, $data) {]]></search>
+			<add><![CDATA[if($data['tag_product']){
+			$this->db->query("DELETE FROM ".DB_PREFIX."category_to_product WHERE category_id='".(int)$category_id."'");
+            foreach ($data['tag_product'] as $key => $value) {
+                $this->db->query("INSERT INTO ".DB_PREFIX."category_to_product SET sort_order='".(int)$value['sort_order']."', product_id='".(int)$value['product_id']."', category_id='".(int)$category_id."'");
+            }
+        }]]></add>
+		</operation>
+	</file>
+	<file name="admin/view/template/catalog/category_form.tpl">
+		<operation error="abort">
+			<search position="replace"><![CDATA[<div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-data"><?php echo $tab_data; ?></a></div>]]></search>
+			<add><![CDATA[<div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-data"><?php echo $tab_data; ?></a><a href="#tab-List">List</a></div>]]></add>
+		</operation>
+	</file>
+	<file name="admin/view/template/catalog/category_form.tpl">
+		<operation error="abort">
+			<search position="before"><![CDATA[</form>]]></search>
+			<add><![CDATA[<div id="tab-List">
+        	 <table id="tag" class="list">
+            <thead>
+              <tr>
+                <td class="left">Danh Sách</td>
+                  <td>Thứ Tự</td>
+              </tr>
+            </thead>
+            <?php $tags_row = 0; ?>
+            <?php foreach ($tag_products as $tag_product) { ?>
+            <tbody id="tags-row<?php echo $tags_row; ?>">
+              <tr>
+                <td class="left"><?php echo $tag_product['model']; ?>: <?php echo $tag_product['name']; ?> 
+                <input type="hidden" name="tag_product[<?php echo $tags_row; ?>][product_id]" value="<?php echo $tag_product['product_id']; ?>" /></td>
+				<td class="left"><input type="text" name="tag_product[<?php echo $tags_row; ?>][sort_order]" value="<?php echo $tag_product['sort_order']; ?>" size="1" class="tag_product_sort_order_<?php echo $tags_row; ?>" /></td>
+              </tr>
+            </tbody>
+            <?php $tags_row++; ?>
+            <?php } ?>
+          </table>
+        </div>]]></add>
+		</operation>
+	</file>
+	<file name="catalog/controller/product/category.php">
+		<operation error="abort">
+			<search position="after"><![CDATA[$results = $this->model_catalog_product->getProducts($data);]]></search>
+			<add><![CDATA[/*lay danh sach thu tu tour trong danh muc*/
+			$order = $this->model_catalog_category->getCateProduct($category_id);
+			$data_order = array();
+			foreach ($order as $korder => $vorder) {
+				foreach ($results as $kresult => $vresult) {
+					if($vresult['product_id'] == $vorder['product_id']){
+						$data_order[] = $vresult; /*tach ra nhung tour co thu tu*/
+					}	
+				}
+			}
+		
+			if($data_order){
+				$results = $data_order;
+			}]]></add>
+		</operation>
+	</file>
+	<file name="catalog/model/catalog/category.php">
+		<operation error="abort">
+			<search position="before"><![CDATA[public function getTotalCategoriesByCategoryId($parent_id = 0) {]]></search>
+			<add><![CDATA[public function getCateProduct($category_id){
+		$query = $this->db->query("SELECT * FROM ".DB_PREFIX."category_to_product WHERE category_id='".(int)$category_id."' ORDER BY sort_order");
+		return $query->rows;
+	}]]></add>
+		</operation>
+	</file>
+</modification>

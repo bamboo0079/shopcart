@@ -1,0 +1,89 @@
+<modification>
+
+	<id>Product sale countdown Timer</id>
+	<version>1.0</version>
+	<vqmver>2.1.7</vqmver>
+	<author>nikita-sp.com.ua</author>
+
+	<file name="system/library/user.php">
+        <operation>
+            <search position="after"><![CDATA[
+            private $username;
+            ]]></search>
+            <add><![CDATA[
+            /* Nikita_SP MOD FOR AdminLog */
+			private $config;
+            ]]></add>
+        </operation>
+        <operation>
+            <search position="after"><![CDATA[
+            public function __construct($registry) {
+            ]]></search>
+            <add><![CDATA[
+			/* Nikita_SP MOD FOR AdminLog */
+			$this->config = $registry->get('config');
+            ]]></add>
+        </operation>
+        <operation>
+            <search position="before"><![CDATA[
+            return true;
+            ]]></search>
+            <add><![CDATA[
+			// Nikita_Sp mod for AdminLog
+			if($this->config->get('adminlog_enable') && $this->config->get('adminlog_login')){
+				$this->db->query("INSERT INTO " . DB_PREFIX . "adminlog SET user_id = '" . (int)$this->user_id . "', `user_name` = '" . $this->username . "', `action` = 'login', `allowed` = '1', `url` = '".$this->request->server['REQUEST_URI']."', `ip` = '" . $this->request->server['REMOTE_ADDR'] . "', date = NOW()");
+			}
+            ]]></add>
+        </operation>
+        <operation>
+            <search position="before" index="1"><![CDATA[
+            return false;
+            ]]></search>
+            <add><![CDATA[
+			// Nikita_Sp mod for AdminLog
+			if($this->config->get('adminlog_enable') && $this->config->get('adminlog_hacklog')){
+				$this->db->query("INSERT INTO " . DB_PREFIX . "adminlog SET user_id = '" . (int)$this->user_id . "', `user_name` = '" . $username . "', `action` = 'login', `allowed` = '0', `url` = '".$this->request->server['REQUEST_URI']."', `ip` = '" . $this->request->server['REMOTE_ADDR'] . "', date = NOW()");
+			}
+            ]]></add>
+        </operation>
+        <operation>
+            <search position="after"><![CDATA[
+            unset($this->session->data['user_id']);
+            ]]></search>
+            <add><![CDATA[
+			// Nikita_Sp mod for AdminLog
+			if($this->config->get('adminlog_enable') && $this->config->get('adminlog_logout')){
+				$this->db->query("INSERT INTO " . DB_PREFIX . "adminlog SET user_id = '" . (int)$this->user_id . "', `user_name` = '" . $this->username . "', `action` = 'logout', `allowed` = '1', `url` = '".$this->request->server['REQUEST_URI']."', `ip` = '" . $this->request->server['REMOTE_ADDR'] . "', date = NOW()");
+			}
+            ]]></add>
+        </operation>
+        <operation>
+            <search position="after"><![CDATA[
+            if (isset($this->permission[$key])) {
+            ]]></search>
+            <add><![CDATA[
+    		// Nikita_Sp mod for AdminLog
+    		if($this->config->get('adminlog_enable')){
+    			if( ( ($this->config->get('adminlog_allowed') == 1 || $this->config->get('adminlog_allowed') == 2) && (in_array($value, $this->permission[$key])) )  ||
+	    			( ($this->config->get('adminlog_allowed') == 0 || $this->config->get('adminlog_allowed') == 2) && !(in_array($value, $this->permission[$key])) )  ){
+	    			if(($this->config->get('adminlog_access') && $key == "access") || ($this->config->get('adminlog_modify') && $key == "modify") ){
+						$this->db->query("INSERT INTO " . DB_PREFIX . "adminlog SET user_id = '" . (int)$this->user_id . "', `user_name` = '" . $this->username . "', `action` = '".$key."', `allowed` = '".in_array($value, $this->permission[$key])."', `url` = '".$this->request->server['REQUEST_URI']."', `ip` = '" . $this->request->server['REMOTE_ADDR'] . "', date = NOW()");
+	    			}
+    			}
+			}
+            ]]></add>
+        </operation>
+        <operation>
+            <search position="before" index="2"><![CDATA[
+            return false;
+            ]]></search>
+            <add><![CDATA[
+    		// Nikita_Sp mod for AdminLog
+    		if($this->config->get('adminlog_enable') && ($this->config->get('adminlog_allowed') == 0 || $this->config->get('adminlog_allowed') == 2)){
+				$this->db->query("INSERT INTO " . DB_PREFIX . "adminlog SET user_id = '" . (int)$this->user_id . "', `user_name` = '" . $this->username . "', `action` = '".$key."', `allowed` = '0', `url` = '".$this->request->server['REQUEST_URI']."', `ip` = '" . $this->request->server['REMOTE_ADDR'] . "', date = NOW()");
+			}
+            ]]></add>
+        </operation>
+	</file>
+
+</modification>

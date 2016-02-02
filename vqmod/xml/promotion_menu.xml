@@ -1,0 +1,39 @@
+<modification>
+
+	<id>promotion menu</id>
+	<version>1.0.0</version>
+	<vqmver>2.1.5</vqmver>
+	<author>codek365@gmail.com</author>
+	
+		
+	<file name="admin/language/*/common/header.php">
+		<operation>
+			<search position="after"><![CDATA[$_['text_product']]]></search>
+			<add><![CDATA[$_['text_event2']                     = 'Quản lý Event';]]></add>
+		</operation>		
+	</file>	
+	
+	<file name="admin/controller/common/header.php">
+		<operation>
+			<search position="after"><![CDATA[$this->data['text_product'] = $this->language->get('text_product');]]></search>
+			<add><![CDATA[$this->data['text_event2'] = $this->language->get('text_event2');]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[$this->data['product'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'], 'SSL');]]></search>
+			<add><![CDATA[$this->data['event'] = $this->url->link('event/event', 'token=' . $this->session->data['token'], 'SSL');]]></add>
+		</operation>		
+	</file>	
+	
+	<file name="admin/view/template/common/header.tpl">
+		<operation>
+			<search position="before"><![CDATA[<li id="sale">]]></search>
+			<add><![CDATA[<li id="promotion"><a class="top" href="<?php echo $event; ?>">Event</a>
+			<!-- <ul>			
+			<li><a href="<?php echo $event; ?>"><?php echo $text_event2; ?></a></li>
+			</ul>
+			</li> -->]]></add>
+		</operation>		
+	</file>	
+	
+</modification>
+

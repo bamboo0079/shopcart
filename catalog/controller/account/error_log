@@ -1,0 +1,2 @@
+[07-Dec-2014 03:00:25 UTC] PHP Fatal error:  Class 'Controller' not found in /home/vfvn/public_html/catalog/controller/account/account.php on line 2
+[07-Dec-2014 03:00:34 UTC] PHP Fatal error:  Class 'Controller' not found in /home/vfvn/public_html/catalog/controller/account/forgotten.php on line 2

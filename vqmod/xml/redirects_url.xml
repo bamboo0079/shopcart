@@ -1,0 +1,27 @@
+<modification>
+	<id>Customer Type Manager Menu Shortcut</id>
+	<version>1.0.0</version>
+	<vqmver>1.0.0</vqmver>
+	<author>Quyen Pham</author>
+	<file name="catalog/controller/common/seo_url.php">
+		<operation error="abort">
+			<search position="after"><![CDATA[public function index() {]]></search>
+			<add><![CDATA[
+			$redirects = $this->config->get('redirects');
+		if (isset($this->request->get['_route_'])) {
+			$_route = $this->request->get['_route_'];
+		}else{
+			$_route = $_SERVER['REQUEST_URI'];
+		}
+		
+		if($redirects){
+			foreach($redirects as $redirect){
+				if($_route == $redirect['okeyword'] || $_route == html_entity_decode($redirect['okeyword'])){
+					header('Location: /' . $redirect['nkeyword'],true,$redirect['type']);
+					die();
+				}
+			}
+		}]]></add>
+		</operation>
+	</file>
+</modification>

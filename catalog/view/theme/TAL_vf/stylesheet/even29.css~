@@ -1,0 +1,363 @@
+.htabs a,.htabs1 a,.htabs_1 a{
+	font-size: 13px !important;
+		color: #FFF;
+}
+.product-promotion-col li p.price{
+	color: #960707;
+}
+.title_tour{
+	text-align:center;font-size: 13px;
+	background-color:#FFF !important;
+	font-weight: bold;color:red;box-shadow: 1px 2px 7px 0 #B2B2B2;
+	text-transform: uppercase;
+}
+.product-promotion-col li p.title{width: 28%;}
+.product-promotion-col li.r{
+	background: #FFF;
+}
+.product-promotion-col li:hover{
+	background: #9CDAC3;
+}
+.product-promotion-col li.bar_title_duonglich{
+	background: #ECF4FF !important;
+}
+.product-promotion-col li{padding:1px 0 1px 5px;}
+.product-promotion-col li p.type{margin-right:0;}
+.product-promotion-col li.bar_title{padding:1px 5px;}
+.product-promotion-col li p.start_time{width:<div class="price_hotline">
+			         		<span>269.000đ</span>
+			         		<span class="arrow_price"></span>
+			      		</div>;}
+.product-promotion-col li p.price{width:12%;}
+tr.r.bar_title.bar_title_duonglich{
+	border-top: 5px solid #fff !important;
+	border-bottom: 1px solid #fff !important;
+	margin-right: -10px!important;
+	background: #008D54!important;
+	width: 98.3%;
+	padding: 10px 5px;
+	font-weight: bold;
+	font-size: 13px !important;
+	color: #FFF !important;
+	text-transform: uppercase;
+	line-height: 1.9em;
+}
+.product-promotion-col tr{
+	background: #fff;
+	padding: 11px 0 6px 10px;
+	overflow: auto;
+	border-top: 1px solid #aaa;
+	width: 98.3%;
+}
+.product-promotion-col th.type,.product-promotion-col td.type, .product-promotion-col td.model{
+	line-height: 1.4;
+	width: 8%;
+	text-align: left;
+	border-right: 1px solid #aaa;
+	border-right-style: dashed;
+	text-align: center;
+}
+.product-promotion-col td.info{
+	line-height: 1.4;
+	width: 8%;padding-left: 5px;
+	text-align: left;
+	border-right: 1px solid #aaa;
+	border-right-style: dashed;
+}
+.product-promotion-col td.info a{
+	background-color:#22A7EE;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:14px;
+	padding:4px 25px;
+	text-decoration:none;
+}
+.product-promotion-col td.info a:hover{
+	background-color:#0B86DE;
+}
+.product-promotion-col th.model{
+	line-height: 1.4;
+	width: 7%;padding-left: 5px;
+	text-align: left;
+	border-right: 1px solid #aaa;
+	border-right-style: dashed;
+}
+.product-promotion-col th.type_tour{
+	line-height: 1.4;
+	width: 9%;
+	padding-left: 5px;
+	text-align: left;
+	border-right: 1px solid #aaa;
+	border-right-style: dashed;
+}
+.product-promotion-col td.title {
+	width: 36%;
+	margin-right: 2%;
+	text-align: left;
+	border-right: 1px solid #aaa;
+	border-right-style: dashed;
+}
+.product-promotion-col th.title{
+	width: 36%;
+	margin-right: 2%;
+	text-align: center;
+	border-right: 1px solid #aaa;
+	border-right-style: dashed;
+}
+.product-promotion-col th.start_time,.product-promotion-col td.start_time {
+	width: 19%;
+	border-right: 1px solid #aaa;
+	border-right-style: dashed;
+	text-align: center;
+}
+.product-promotion-col td.start_time{
+	line-height: 1.8em;font-size: 14px;
+}
+ .product-promotion-col th.price,.product-promotion-col td.price {
+	width: 13%;    border-right: 1px solid #aaa;
+	border-right-style: dashed;
+	text-align: center;
+}
+.product-promotion-col td.price{
+	font-size: 14px;
+	line-height: 1.8em;
+	color: #FF0000;
+	font-weight: bold;
+}
+.product-promotion-col td{
+	text-align: center;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+.product-promotion-col td.type_tour{
+	text-align: center;
+	padding-left: 1px;
+	padding-right: 1px;
+}
+.product-promotion-col tr td.type a{
+	margin-right: 2%;
+	text-align: left;
+	color: #0B86DE;
+	line-height: 1.8em;
+	font-size: 14px;
+}
+.product-promotion-col tr td.title a{
+	margin-right: 2%;
+	text-align: left;
+	color: #0B86DE;
+	line-height: 1.8em;
+	font-size: 14px;
+	font-weight: bold;
+}
+.product-promotion-col tr:hover{
+	background: #EAEAEA;
+}
+td.type_tour{
+	background:#E2F6F7;
+	color: #FF0000;
+	font-weight: bold;
+	border-right: 1px solid #D4D4D4;
+} 
+.htabs1 a{
+	white-space: nowrap;
+	padding: 8px 0.8px 8px 8px;
+	float: left;
+	font-family: Tahoma,Geneva,sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	color: #FFF;
+	display: none;
+	width: 24%;
+} 
+table.product-promotion-col{
+		width: 99.3%;clear: both;
+}
+.tour-two a{
+	padding: 8px 8.4px 8px 8px !important;
+	width: 14.7% !important;
+}
+.tour-three a{
+	padding: 8px 11.5px 8px 8px !important;
+	width: 31% !important;
+}
+td div {
+border-bottom: 1px dashed #aaa;
+}
+.htabs1 a{
+	width: 23%;
+	border: 1px solid #6CB58B;
+	padding: 8px 8.3px 8px 8px;
+}
+.htabs1 a.selected{
+	border: 1px solid #6CB58B;
+	color: #008D54;
+}
+div.non-border{
+	border: none;
+}
+.archor {
+	margin-left: 28%;
+}
+.htabs_1 a,.htabs a.selected{
+	background: #00913E;
+}
+.htabs1 a{
+	background: #FFF;
+	color: red;
+}
+.htabs a{
+	background: #56B845;
+}
+.htabs1 a:hover{
+	color: #008D54;
+}
+.price_hotline {
+    float: left;
+    padding: 8px 2px 8px;
+    text-transform: uppercase;
+    background: #D31A1A;
+    font-weight: 700;
+    position: relative;
+    border-bottom:0px;
+}
+.price_hotline span {
+    color: #FFF;
+    text-shadow: none;
+    font-size: 14px;
+}
+.price_hotline .arrow_price {
+    width: 0;
+    height: 0;
+    border: 10px solid #D31A1A;
+    border-top: 16px solid transparent;
+    border-bottom: 16px solid transparent;
+    border-right: 13px solid transparent;
+    position: absolute;
+    right: -23px;
+    top: 0;
+}
+ul.note {
+    line-height: 1.6;
+    padding-left: 29px;
+    list-style-type: square;
+    border-left: 3px solid #E67E22;
+    margin: 10px 0;
+}
+.first.fixed-scroll{
+	position: fixed;
+    top: 100px;
+    z-index: 10;
+}
+.sescon.fixed-scroll{
+	position: fixed;
+    top: 100px;
+    z-index: 10;
+}
+.three.fixed-scroll{
+	position: fixed;
+    top: 100px;
+    z-index: 10;
+}
+.first_mt.fixed-scroll{
+	position: fixed;
+    top: 100px;
+    z-index: 10;
+}
+.sescon_mt.fixed-scroll{
+	position: fixed;
+    top: 100px;
+    z-index: 10;
+}
+.three_mt.fixed-scroll{
+	position: fixed;
+    top: 100px;
+    z-index: 10;
+}
+.first_dn.fixed-scroll{
+	position: fixed;
+    top: 100px;
+    z-index: 10;
+}
+.sescon_dn.fixed-scroll{
+	position: fixed;
+    top: 100px;
+    z-index: 10;
+}
+.three_dn.fixed-scroll{
+	position: fixed;
+    top: 100px;
+    z-index: 10;
+}
+.first_hn.fixed-scroll{
+	position: fixed;
+    top: 100px;
+    z-index: 10;
+}
+.sescon_hn.fixed-scroll{
+	position: fixed;
+    top: 100px;
+    z-index: 10;
+}
+.three_hn.fixed-scroll{
+	position: fixed;
+    top: 100px;
+    z-index: 10;
+}
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+	#promotion_content_news img{width: 91% !important;height: auto !important}
+	.product-promotion-col th.type,.product-promotion-col td.type_tour,.product-promotion-col td.info,.product-promotion-col th.type_tour,.product-promotion-col td.type{display: none;}
+	td div {
+		border-bottom: 1px solid #1D1818 !important;
+	}
+	div.non-border{
+	border: none !important;
+	}
+	.htabs a{width: 97%;}
+	.htabs1 a{width: 95%;}
+	.tour-two a {width: 30.7% !important;}
+	.tour-three a {width: 31% !important; padding: 8px 6.5px 8px 8px !important;}
+	.promotion_content .htabs1 a {
+	    width: 47%;
+	    padding: 8px 5px 7px 14px;
+	}
+}
+
+@media only screen and (max-width: 767px) and (min-width: 480px){
+	#promotion_content_news img{width: 91% !important;height: auto !important}
+	.product-promotion-col th.type,.product-promotion-col td.type_tour,.product-promotion-col td.info,.product-promotion-col th.type_tour,.product-promotion-col td.type{display: none;}
+	td div {
+		border-bottom: 1px solid #1D1818 !important;
+	}
+	div.non-border{
+	border: none !important;
+	}
+	.htabs a{width: 97%;}
+	.htabs1 a{width: 95%;}
+	.tour-two a {width: 94.7% !important;}
+	.tour-three a {width: 94% !important;}
+	.promotion_content .htabs1 a {
+	    width: 96%;
+	    padding: 8px 2px 7px 10px;
+	}
+}
+@media only screen and (max-width: 479px) {	
+	#promotion_content_news img{width: 91% !important;height: auto !important}
+	.product-promotion-col th.type,.product-promotion-col td.type_tour,.product-promotion-col td.info,.product-promotion-col th.type_tour,.product-promotion-col td.type{display: none;}
+	td div {
+		border-bottom: 1px solid #1D1818 !important;
+	}
+	div.non-border{
+	border: none !important;
+	}
+	.htabs a{width: 97%;}
+	.htabs1 a{width: 95%;}
+	.tour-two a {width: 94.7% !important;}
+	.tour-three a {width: 94% !important;}
+}

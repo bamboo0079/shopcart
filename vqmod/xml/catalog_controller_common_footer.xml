@@ -1,0 +1,17 @@
+<modification>
+	<id>catalog - controller - common - footer</id>
+	<version>1.0</version>
+	<vqmver>2.1.5</vqmver>
+	<author>quyenpd</author>
+	<file name="catalog/controller/common/footer.php">
+		<operation>
+			<search position="before"><![CDATA[
+				if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/footer.tpl')) {
+			]]></search>
+			<add><![CDATA[
+				$this->children[] = 'common/footer_top';
+				$this->children[] = 'common/footer_bottom';
+			]]></add>
+		</operation>
+	</file>
+</modification>

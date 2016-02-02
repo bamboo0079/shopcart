@@ -1,0 +1,26 @@
+//******************** UPDATE F2F ********************//
+$re = $this->db->query("SELECT * FROM vf_product_description");
+foreach($re->rows as $i){
+	$this->db->query("UPDATE vf_product_description SET location_from = '".$i['departure']."' WHERE product_id = ".$i['product_id']."");
+}exit;
+//******************** UPDATE TU CHON URL DANH MUC ********************//
+$re = $this->model_catalog_product->getProducts();
+foreach($re as $i){
+	$cate_id = $this->model_catalog_product->getProductCategories($i['product_id']);
+	if (isset($cate_id[2])) {
+		$cate_id = $cate_id[2];
+	} elseif (isset($cate_id[1])) {
+		$cate_id = $cate_id[1];
+	} elseif(isset($cate_id[0])) {
+		$cate_id = $cate_id[0];
+	}
+	if(isset($cate_id)){
+		$this->db->query("UPDATE vf_product SET custom_breadcrumb = '".$cate_id."' WHERE product_id = ".$i['product_id']."");
+		$this->db->query("UPDATE vf_product SET custom_link = '".$cate_id."' WHERE product_id = ".$i['product_id']."");
+	}
+}exit;
+//******************** UPDATE TU CHON URL DANH MUC ********************//
+$re = $this->db->query("SELECT * FROM vf_tour_description");
+foreach($re->rows as $i){
+	$this->db->query("UPDATE vf_product_description SET departures = '".$i['departures']."',departure_tet = '".$i['departure_tet']."' WHERE product_id = ".$i['tour_id']."");
+}exit;

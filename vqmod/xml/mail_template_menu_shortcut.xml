@@ -1,0 +1,30 @@
+<modification>
+	<id>Mail Template Manager Menu Shortcut</id>
+	<version>1.0.0</version>
+	<vqmver>1.0.0</vqmver>
+	<author>Quyen Pham</author>
+	<file name="admin/controller/common/header.php">
+		<operation error="abort">
+			<search position="before"><![CDATA[$this->data['text_zone']]]></search>
+			<add><![CDATA[		$this->data['text_mail_template'] = $this->language->get('text_mail_template');]]></add>
+		</operation>
+		<operation error="abort">
+			<search position="before"><![CDATA[$this->data['zone']]]></search>
+			<add><![CDATA[			$this->data['mail_template'] = $this->url->link('sale/mail_template', 'token=' . $this->session->data['token'], 'SSL');]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/*/common/header.php">
+		<operation error="abort">
+			<search position="before"><![CDATA[$_['text_zone']]]></search>
+			<add><![CDATA[$_['text_mail_template']               = 'Mail Template';]]></add>
+		</operation>
+	</file>
+	<file name="admin/view/template/common/header.tpl">
+		<operation error="abort">
+			<search position="before"><![CDATA[<li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>]]></search>
+			<add><![CDATA[          <li><a href="<?php echo $mail_template; ?>"><?php echo $text_mail_template; ?></a></li>]]></add>
+		</operation>
+	</file>
+	
+	
+</modification>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+    <id>SwitchBoard</id>
+    <version>1</version>
+    <vqmver>2.3.2</vqmver>
+    <author>tranminh1236@gmail.com</author>
+    
+    <file name="catalog/controller/common/footer.php">
+        <operation>
+            <search position="after"><![CDATA[$this->children[] = 'common/footer_bottom';]]></search>
+            <add><![CDATA[$this->data['image_support_footer'] = '/image/data/logo/bottom-tong-dai.png';]]></add>
+        </operation>
+    </file>
+    
+    <file name="catalog/controller/common/header.php">
+        <operation>
+            <search position="before"><![CDATA[$this->load->model('catalog/news_category');]]></search>
+            <add><![CDATA[$this->data['image_support'] = $server . 'image/data/logo/img-tongdai.png';
+        $this->data['logo'] = $server . 'image/data/logo/logo-vft.png';]]></add>
+        </operation>
+    </file>
+
+    <file name="catalog/view/theme/*/*/common/header.tpl">
+        <operation>
+            <search position="replace"><![CDATA[<?php if($this->request->server['QUERY_STRING'] == 'route=common/home' || $this->request->server['QUERY_STRING'] == ''){?><h1 id="logo"><a href="<?php echo $home; ?>" title="Tour Du Lịch Việt Nam 2015 - Viet Fun Travel - Du Lịch Việt Vui"><img src="http://www.vietfuntravel.com.vn/image/tour-du-lich-viet-nam-viet-fun-travel.png" alt="Tour Du Lịch Việt Nam - Viet Fun Travel - Du Lịch Việt Vui" /><strong>Tour Du Lịch Việt Nam 2015 - Viet Fun Travel - Du Lịch Việt Vui</strong></a></h1><?php }else{?><div id="logo"><a href="<?php echo $home; ?>" title="Tour Du Lịch Việt Nam 2015 - Viet Fun Travel - Du Lịch Việt Vui"><img src="<?php echo $logo; ?>" alt="Logo Du Lịch Việt Vui - Viet Fun Travel" /></a></div><?php }?>]]></search>
+            <add><![CDATA[<h1 id="logo"><a href="<?php echo $home; ?>" title="Tour Du Lịch Việt Nam 2015 - Viet Fun Travel - Du Lịch Việt Vui"><img src="<?php echo $logo;?>" alt="Tour Du Lịch Việt Nam - Viet Fun Travel - Du Lịch Việt Vui" /><strong>Tour Du Lịch Việt Nam 2015 - Viet Fun Travel - Du Lịch Việt Vui</strong></a></h1>]]></add>
+        </operation>
+
+        <operation>
+            <search position="replace"><![CDATA[<ul class="tv"></ul><ul class="dt"></ul>]]></search>
+            <add><![CDATA[<div class="spt-w"><img src="<?php echo (isset($image_support) ? $image_support : '');?>" title="Vietfuntravel Support"></div>]]></add>
+        </operation>
+    </file>
+
+    <file name="catalog/view/theme/*/*/common/footer.tpl">
+        <operation>
+            <search position="replace"><![CDATA[<li><span class="bold"><?php echo $text_copy?></span><h2><a href="<?php echo $home?>" title="Tour Du Lịch Việt Nam 2015 - Viet Fun Travel - Du Lịch Việt Vui" target="_blank"><?php echo $text_copy2 ?></a></h2></li>]]></search>
+            <add><![CDATA[<li><span class="bold"><?php echo $text_copy?></span><h2><a href="<?php echo $home?>" title="Tour Du Lịch Việt Nam 2016 - Viet Fun Travel - Du Lịch Việt Vui" target="_blank">-<?php echo $text_copy2 ?></a></h2></li>]]></add>
+        </operation>
+        <operation>
+            <search position="replace"><![CDATA[<div class="tv"><div class="tag_hotline"><span>TƯ VẤN</span><span class="arrow_hotline"></span></div><ul></ul></div><div class="dt"><div class="tag_hotline"><span>ĐẶT TOUR</span><span class="arrow_hotline"></span></div><ul></ul></div>]]></search>
+            <add><![CDATA[<img src="<?php echo $image_support_footer;?>" alt="Vietfuntravel support" title="Vietfuntravel support">]]></add>
+        </operation>
+    </file> 
+</modification>

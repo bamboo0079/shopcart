@@ -1,0 +1,42 @@
+<modification>
+	<id>News Manager Menu Shortcut</id>
+	<version>1.0.0</version>
+	<vqmver>1.0.0</vqmver>
+	<author>Quyen Pham</author>
+	<file name="admin/controller/common/header.php">
+		<operation error="abort">
+			<search position="before"><![CDATA[$this->data['text_zone']]]></search>
+			<add><![CDATA[		$this->data['text_news'] = $this->language->get('text_news');
+			$this->data['text_news_category'] = $this->language->get('text_news_category');
+			$this->data['text_news_comment'] = $this->language->get('text_news_comment');]]></add>
+		</operation>
+		<operation error="abort">
+			<search position="before"><![CDATA[$this->data['zone']]]></search>
+			<add><![CDATA[			$this->data['news'] = $this->url->link('catalog/news', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['news_category'] = $this->url->link('catalog/news_category', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['news_comment'] = $this->url->link('catalog/news_comment', 'token=' . $this->session->data['token'], 'SSL');]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/*/common/header.php">
+		<operation error="abort">
+			<search position="before"><![CDATA[$_['text_zone']]]></search>
+			<add><![CDATA[$_['text_news']               = 'Tin tức';
+			$_['text_news_category']               = 'Danh mục';
+			$_['text_news_comment']               = 'Nhận xét';]]></add>
+		</operation>
+	</file>
+	<file name="admin/view/template/common/header.tpl">
+		<operation error="abort">
+			<search position="before"><![CDATA[<a class="top"><?php echo $text_extension; ?></a>]]></search>
+			<add><![CDATA[          <li id="news"><a class="top"><?php echo $text_news; ?></a>
+        <ul>
+          <li><a href="<?php echo $news; ?>"><?php echo $text_news; ?></a></li>
+          <li><a href="<?php echo $news_category; ?>"><?php echo $text_news_category; ?></a></li>
+          <li style="display:none"><a href="<?php echo $news_comment; ?>"><?php echo $text_news_comment; ?></a></li>
+        </ul>
+      </li>]]></add>
+		</operation>
+	</file>
+	
+	
+</modification>

@@ -1,0 +1,28 @@
+.scrollbox{ width: 560px; height: 350px;}
+.tl-top{ width: 546px; line-height: 30px;
+    background: rgba(0, 0, 0, 0);
+    border: 1px solid #dbdbdb;
+    border-bottom: 0px;
+    border-radius: 7px 7px 0 0;
+    padding-left: 7px;
+    padding-right: 7px;
+    background-image: -moz-linear-gradient(center top , #f3f3f3 0%, #dddddd 50%, #d2d2d2 50%, #dfdfdf 100%);
+    color: #003a88; font-weight: bold;
+}
+a.cls{
+    padding: 5px; margin-right: 5px;
+    background-image: -moz-linear-gradient(center top , #f3f3f3 0%, #dddddd 50%, #d2d2d2 50%, #dfdfdf 100%);
+    color: #333; font-weight: bold; text-decoration: none; border: 1px #ccc solid; border-radius: 2px;
+}
+a.cls:hover{
+    box-shadow: 0 1px 0 0 white inset, 0 1px 0 0 #d5d5d5, 0 -1px 2px 1px #efefef;
+    color: #666;
+}
+
+
+.mn-cl-left{ width: 20%;  float: left;}
+.mn-cl-right{ width: 76%; float: left; margin-left: 15px;}
+.class-boder{ border-bottom: 1px dotted #cccccc; padding-bottom: 15px;padding-top: 15px; }
+.mn-bottom{ text-align: right; float: right; width: 98%; margin-top: 15px; }
+.sl-width{ width: 98%; !important;}
+.img-link{ width: 100%; margin-top: 15px; float: left;}

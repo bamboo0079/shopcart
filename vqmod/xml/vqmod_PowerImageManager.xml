@@ -1,0 +1,71 @@
+<modification>
+	<id>Power Image Manager</id>
+	<version>2.0</version>
+	<vqmver>2.3.2</vqmver>
+	<author>Kamen Sharlandjiev</author>
+
+	<file error="skip" name="admin/controller/common/filemanager.php">
+        <operation>
+            <search position="replace"><![CDATA[$this->response->setOutput($this->render());]]></search>
+            <add><![CDATA[
+              if ($this->config->get('pim_status')) {
+            		$this->data['lang'] = 'en';
+            		if ($this->config->get('pim_language')) {
+              		$this->data['lang'] = $this->config->get('pim_language');
+            		}
+            		$this->template = 'common/pim.tpl';
+              }
+          		$this->response->setOutput($this->render());
+            ]]></add>
+        </operation>
+        <operation>
+            <search position="before" offset="1"><![CDATA[?>]]></search>
+            <add><![CDATA[
+    public function connector() {
+      include_once DIR_SYSTEM.'library/filemanager/elFinderConnector.class.php';
+      include_once DIR_SYSTEM.'library/filemanager/elFinder.class.php';
+      include_once DIR_SYSTEM.'library/filemanager/elFinderVolumeDriver.class.php';
+      include_once DIR_SYSTEM.'library/filemanager/elFinderVolumeLocalFileSystem.class.php';
+
+      if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
+  			$base = HTTPS_CATALOG. "image/";
+  		} else {
+  			$base = HTTP_CATALOG."image/";
+  		}    
+    
+       $this->config->set('config_error_display', 0);       
+       $this->config->set('config_error_log', 0);
+        function access($attr, $path, $data, $volume) {
+        	return strpos(basename($path), '.') === 0       // if file/folder begins with '.' (dot)
+        		? !($attr == 'read' || $attr == 'write')    // set read+write to false, other (locked+hidden) set to true
+        		:  null;                                    // else elFinder decide it itself
+        }
+        $tmbURL = DIR_IMAGE.'tmb/';
+        if ($this->config->get('pim_joomla') ) {
+          $tmbPath = HTTP_CATALOG.'/components/com_mijoshop/opencart/image/tmb/';
+        }
+        $opts = array(
+        	//'debug' => true,
+        	'roots' => array(
+        		array(
+        			'driver'        => 'LocalFileSystem',   // driver for accessing file system (REQUIRED)
+        			'path'          => DIR_IMAGE.'data/',         // path to files (REQUIRED)
+        			'URL'           => $base.'data/', // URL to files (REQUIRED)
+        			'accessControl' => 'access',             // disable and hide dot starting files (OPTIONAL)
+              'fileMode'     => 0777,         // new files mode
+              'dirMode'      => 0777,         // new folders mode        			
+        			'tmbBgColor'    => 'transparent',
+        			'tmbCrop'       => 'false', 
+        			'copyOverwrite' => $this->config->get('pim_copyOverwrite'),
+        			'uploadOverwrite' => $this->config->get('pim_uploadOverwrite'),
+        			'uploadMaxSize'  => ''.$this->config->get('pim_uploadMaxSize').'M',      			
+        		)
+        	)
+        );
+        $connector = new elFinderConnector(new elFinder($opts));
+        $connector->run();
+    }            
+            ]]></add>
+        </operation>                
+	</file>	
+</modification>

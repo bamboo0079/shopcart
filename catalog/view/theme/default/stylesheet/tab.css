@@ -1,0 +1,209 @@
+﻿@import url("promotion.css");
+
+/*Tab horizontal*/
+
+#tabs_featured{margin-bottom:10px}
+
+.items_tab .htabs_bus{position:relative; top:-5px; overflow:hidden; height:30px;padding-left: 5px;}
+.items_tab .htabs_bus a.selected{color:#FF0}
+.items_tab .htabs_bus a.selected:before{content:""; width:0; height:0; border:6px solid #16A085; border-left:7px solid transparent; border-right:7px solid transparent; border-bottom:0px solid transparent; position:absolute; left:45%; top:22px}
+.items_tab .htabs_bus a{float:left; margin-right:3px; padding:3px 23px; font-size:13px; display:block; font-weight:bold; color:#fff; position:relative;background:#2ECC71}
+.items_tab .htabs_bus a:last-child {
+margin-right: 0;
+}
+.htabs_promotion{top:0 !important;height:36px !important;}
+.htabs_promotion a{padding:7px 8px !important;}
+.htabs_promotion a.selected:before{top: 30px !important;}
+.items_tab_promotion {
+position: absolute;
+right: 0;
+top: 0;
+}
+
+/*Tab vertical*/
+.items_tab .htabs_featured{overflow:auto}
+.items_tab .htabs_featured a{float:left; width:185px; margin-left:20px; margin-bottom:5px; color:#08c; font:bold 13px "Open Sans",Tahoma,Arial,Verdana,sans-serif!important; padding:11px 14px 11px 15px; text-align:left; text-decoration:none; border:0; border-radius:0; clear:both; display:block; position:relative}
+.items_tab .htabs_featured a.selected i, .items_tab .htabs_featured a:hover i{width:0; height:0; border:20px solid #fe7f03; border-top:19px solid transparent; border-bottom:19px solid transparent; border-left:7px solid transparent; position:absolute; left:-27px; top:0}
+.items_tab .htabs_featured a.selected, .items_tab .htabs_featured a:hover{background:#fe7f03; color:#fff}
+.items_tab .view_featured{text-align:center; margin:40px 0 0}
+
+
+/*********** Khoa Fixed Style*************** */
+.htabs_top{height:40px;margin-bottom: 40px;
+}
+
+.htabs_tabs{
+	height:32px; 
+	line-height:16px; 
+	border-bottom:2px solid #08c;
+	padding-left:5px; 
+	margin-bottom:5px
+}
+.htabs_tabs a{
+	white-space:nowrap;
+	border:1px solid #ddd; 
+	border-bottom:0; 
+	background:#FFF url('../image/tab.png') repeat-x; 
+	padding:8px 15px 7px 15px; 
+	float:left; 
+	font-family:Tahoma,Geneva,sans-serif; 
+	font-size:13px; 
+	font-weight:bold; text-align:center; 
+	text-decoration:none; color:#333; 
+	margin-right:4px; 
+	display:none; 
+	border-radius:5px 5px 0 0; 
+	-webkit-border-radius:5px 5px 0 0; 
+	-moz-border-radius:5px 5px 0 0
+}
+.htabs_tabs a.selected{
+	padding-bottom:8px; 
+	border:0; 
+	color:#fff; 
+	background:#08c
+}
+
+.htabs_top p{
+  line-height:16px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #236baa;
+  text-transform: uppercase;
+  padding: 12px 5px;
+}
+
+
+.htabs a{  
+  white-space: nowrap;
+  border-top: 5px solid #FFF;
+  /*border-left: 1px solid #32CCCC;*/
+  border-right: 1px solid #fff;
+  padding: 8px 0px 8px 10px;
+  float: left;
+  font-family: Tahoma,Geneva,sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #2383B1;
+  display: none;
+  -moz-border-radius: 5px 5px 0 0;
+  width: 32%;
+
+}
+
+.htabs1{	
+	
+}
+.htabs1 a {  
+  white-space: nowrap;
+  padding: 8px 0px 8px 8px;
+  float: left;
+  font-family: Tahoma,Geneva,sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #FFF;
+  display: none;
+  width: 49%;
+}
+.htabs1 a.selected{
+	padding-bottom:8px; 
+	border:0; 
+	color:#E2E252; 
+}
+.htabs1 a:hover{
+	color:#E2E252;
+
+
+}
+.htabs1 a.selected:hover{
+	/*color: #FFF; */
+}
+
+
+.htabs_1 a{  
+  background: #2CC185;
+  padding: 9px 0px 9px 8px;
+  float: left;
+  font-family: Tahoma,Geneva,sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #FFF;
+  display: none;
+  width: 98.66%;
+}
+.htabs_1 a.selected{
+	border:0; 
+	color: #E2E252; 
+	margin-left: 0px;
+	margin-right: -4px;
+}
+.htabs_1 a:hover{
+}
+.htabs_1 a.selected:hover{
+
+}
+
+.tab-content{
+	border-top:0; 
+	padding:5px 0; 
+	margin-bottom:20px; 
+	z-index:2; 
+	line-height:1.6; 
+	font-size:12px;
+}
+.product-info .tab-content{margin-bottom:0}
+
+/*=========================================   Style for All Tab =======================================*/
+.htabs a.selected{ 
+  	color:#E2E252;
+  	border-radius: 7px 7px 0 0;
+  	/*border-right: 1px solid #039797;*/
+  	border-top: 5px solid #008D54; 
+
+}
+.htabs_1 a, .htabs1 a, .htabs a.selected{ 
+	background: #008D54;
+
+}
+.htabs a {
+	background: #08C058;
+	color: #FFF;
+	text-transform: capitalize;
+}
+.htabs_1 {
+	  margin-right: 2px;
+}
+.htabs1 {margin-right: 3px}
+.htabs a:hover{
+	color: #E2E252 !important;
+}
+
+.headtitle {
+	display: none;
+}
+
+.htabs a.selected .headtitle {
+	display: inline;
+}
+
+.atitle {
+	text-transform: capitalize;
+}
+.htabs_1 a.selected .atitle, .htabs1 a.selected .atitle  {font-style: italic;}
+.htabs_1 a i, .htabs1 a i, .htabs1 a i {
+	display: none;
+	animation-duration: 2s;
+	/*color: #000;*/
+	font-weight: bolder;
+}
+.htabs_1 a.selected i, .htabs1 a.selected i, .htabs1.selected a i {display: inline-block;}
+/*=================================== end ==========================================================*/
+
+
+/*********** End Khoa Fixed Style **********

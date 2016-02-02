@@ -1,0 +1,3 @@
+<?php if(isset($description['img']) && !empty($description['img'])){  ?>
+<a href="<?php echo ($description['link'] ? $description['link'] : '');?>" title="<?php echo $description['name']; ?>"><img alt="<?php echo $description['name']; ?>" title="<?php echo $description['name']; ?>" src="<?php echo( $this->model_tool_image->onesize($description['img'],$description['width'],$description['height']))?>"></a>
+<?php }?>

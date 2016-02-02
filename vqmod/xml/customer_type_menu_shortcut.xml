@@ -1,0 +1,30 @@
+<modification>
+	<id>Customer Type Manager Menu Shortcut</id>
+	<version>1.0.0</version>
+	<vqmver>1.0.0</vqmver>
+	<author>Quyen Pham</author>
+	<file name="admin/controller/common/header.php">
+		<operation error="abort">
+			<search position="before"><![CDATA[$this->data['text_zone']]]></search>
+			<add><![CDATA[		$this->data['text_customer_type'] = $this->language->get('text_customer_type');]]></add>
+		</operation>
+		<operation error="abort">
+			<search position="before"><![CDATA[$this->data['zone']]]></search>
+			<add><![CDATA[			$this->data['customer_type'] = $this->url->link('sale/customer_type', 'token=' . $this->session->data['token'], 'SSL');]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/*/common/header.php">
+		<operation error="abort">
+			<search position="before"><![CDATA[$_['text_zone']]]></search>
+			<add><![CDATA[$_['text_customer_type']               = 'Loại khách hàng';]]></add>
+		</operation>
+	</file>
+	<file name="admin/view/template/common/header.tpl">
+		<operation error="abort">
+			<search position="before"><![CDATA[<li><a href="<?php echo $customer_group; ?>"><?php echo $text_customer_group; ?></a></li>]]></search>
+			<add><![CDATA[          <li><a href="<?php echo $customer_type; ?>"><?php echo $text_customer_type; ?></a></li>]]></add>
+		</operation>
+	</file>
+	
+	
+</modification>

@@ -1,0 +1,63 @@
+<modification>
+
+	<id>promotion menu</id>
+	<version>1.0.0</version>
+	<vqmver>2.1.5</vqmver>
+	<author>ductrungvf@gmail.com</author>
+	
+		
+	<file name="admin/language/*/common/header.php">
+		<operation>
+			<search position="before"><![CDATA[$_['text_product']]]></search>
+			<add><![CDATA[
+			$_['text_promotion']                       = 'Khuyến mãi';
+			$_['text_promotion_gioto']                     = 'Khuyến mại giỗ tổ';
+			$_['text_promotion_he']                     = 'Khuyến mại hè';
+			$_['text_promotion_khtetamlich']                     = 'Khuyến mại tết nguyên đán';
+			$_['text_promotion_khtetduonglich']                     = 'Khuyến mại tết dương lịch';
+			$_['text_promotion_even29']                     = 'Khuyến mại 2-9';
+			]]></add>
+		</operation>		
+	</file>	
+	
+	<file name="admin/controller/common/header.php">
+		<operation>
+			<search position="after"><![CDATA[$this->data['text_product'] = $this->language->get('text_product');]]></search>
+			<add><![CDATA[
+			$this->data['text_promotion'] = $this->language->get('text_promotion');
+			$this->data['text_promotion_gioto'] = $this->language->get('text_promotion_gioto');
+			$this->data['text_promotion_he'] = $this->language->get('text_promotion_he');
+			$this->data['text_promotion_khtetamlich'] = $this->language->get('text_promotion_khtetamlich');
+			$this->data['text_promotion_khtetduonglich'] = $this->language->get('text_promotion_khtetduonglich');
+			$this->data['text_promotion_even29'] = $this->language->get('text_promotion_even29');
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[$this->data['product'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'], 'SSL');]]></search>
+			<add><![CDATA[
+			$this->data['promotion_gioto'] = $this->url->link('module/gioto', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['promotion_he'] = $this->url->link('module/he', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['promotion_khtetamlich'] = $this->url->link('module/khtetamlich', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['promotion_khtetduonglich'] = $this->url->link('module/khtetduonglich', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['promotion_even29'] = $this->url->link('module/even29', 'token=' . $this->session->data['token'], 'SSL');
+			]]></add>
+		</operation>		
+	</file>	
+	
+	<file name="admin/view/template/common/header.tpl">
+		<operation>
+			<search position="before"><![CDATA[<li id="system"><a class="top"><?php echo $text_system; ?></a>]]></search>
+			<add><![CDATA[<li id="promotion"><a class="top"><?php echo $text_promotion; ?></a>
+			<ul>			
+			<li><a href="<?php echo $promotion_gioto; ?>"><?php echo $text_promotion_gioto; ?></a></li>
+			<li><a href="<?php echo $promotion_he; ?>"><?php echo $text_promotion_he; ?></a></li>
+			<li><a href="<?php echo $promotion_khtetamlich; ?>"><?php echo $text_promotion_khtetamlich; ?></a></li>
+			<li><a href="<?php echo $promotion_khtetduonglich; ?>"><?php echo $text_promotion_khtetduonglich; ?></a></li>
+			<li><a href="<?php echo $promotion_even29; ?>"><?php echo $text_promotion_even29; ?></a></li>
+			</ul>
+			</li>]]></add>
+		</operation>		
+	</file>	
+	
+</modification>
+

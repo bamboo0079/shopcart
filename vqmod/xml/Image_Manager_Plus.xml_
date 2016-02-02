@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+	<id>Image Manager Plus</id>
+	<version>1.0.0</version>
+	<vqmver>1.0.0</vqmver>
+	<author>OpenCartPlus.com</author>
+	<file name="*/controller/common/filemanager.php">
+		<operation>
+			<search position="replace"><![CDATA[$this->template = 'common/filemanager.tpl';]]></search>
+			<add><![CDATA[$this->template='module/image_manager_plus/popup.tpl';]]></add>
+		</operation>
+	</file>	
+	<file name="*/view/template/common/header.tpl">
+		<operation>
+			<search position="after"><![CDATA[<li><a href="<?php echo $module; ?>"><?php echo $text_module; ?></a></li>]]></search>
+			<add><![CDATA[<?php
+			$library = $this->url->link('module/image_manager_plus', 'token=' . $this->session->data['token'], 'SSL');?>
+			<li><a href="<?php echo $library; ?>">Image Manager Plus</a></li>
+			]]></add>
+		</operation>
+	</file>
+</modification>

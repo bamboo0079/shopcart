@@ -1,0 +1,30 @@
+<modification>
+	<id>Employee Manager Menu Shortcut</id>
+	<version>1.0.0</version>
+	<vqmver>1.0.0</vqmver>
+	<author>Quyen Pham</author>
+	<file name="admin/controller/common/header.php">
+		<operation error="abort">
+			<search position="before"><![CDATA[$this->data['text_zone']]]></search>
+			<add><![CDATA[		$this->data['text_employee'] = $this->language->get('text_employee');]]></add>
+		</operation>
+		<operation error="abort">
+			<search position="before"><![CDATA[$this->data['zone']]]></search>
+			<add><![CDATA[			$this->data['employee'] = $this->url->link('catalog/employee', 'token=' . $this->session->data['token'], 'SSL');]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/*/common/header.php">
+		<operation error="abort">
+			<search position="before"><![CDATA[$_['text_zone']]]></search>
+			<add><![CDATA[$_['text_employee']               = 'Nhân viên';]]></add>
+		</operation>
+	</file>
+	<file name="admin/view/template/common/header.tpl">
+		<operation error="abort">
+			<search position="before"><![CDATA[<a class="top"><?php echo $text_extension; ?></a>]]></search>
+			<add><![CDATA[          <li id="employee"><a href="<?php echo $employee; ?>" class="top"><?php echo $text_employee; ?></a></li>]]></add>
+		</operation>
+	</file>
+	<!--CATELOG-->
+	
+</modification>

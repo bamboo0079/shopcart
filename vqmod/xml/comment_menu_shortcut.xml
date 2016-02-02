@@ -1,0 +1,31 @@
+<modification>
+	<id>Comment Manager Menu Shortcut</id>
+	<version>1.0.0</version>
+	<vqmver>1.0.0</vqmver>
+	<author>ini.vn</author>
+	<file name="admin/controller/common/header.php">
+		<operation error="abort">
+			<search position="before"><![CDATA[$this->data['text_zone']]]></search>
+			<add><![CDATA[		$this->data['text_comment'] = $this->language->get('text_comment');]]></add>
+		</operation>
+		<operation error="abort">
+			<search position="before"><![CDATA[$this->data['zone']]]></search>
+			<add><![CDATA[			$this->data['comment'] = $this->url->link('catalog/comment', 'token=' . $this->session->data['token'], 'SSL');
+			$total = $this->db->query("SELECT COUNT(*) as count FROM `" . DB_PREFIX . "comment` WHERE status = 0") -> row;
+			$this->data['total_comment'] = $total['count'];
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/*/common/header.php">
+		<operation error="abort">
+			<search position="before"><![CDATA[$_['text_zone']]]></search>
+			<add><![CDATA[$_['text_comment']               = 'Nhận xét';]]></add>
+		</operation>
+	</file>
+	<file name="admin/view/template/common/header.tpl">
+		<operation error="abort">
+			<search position="before"><![CDATA[<a class="top"><?php echo $text_extension; ?></a>]]></search>
+			<add><![CDATA[          <li id="comment" style="position:relative"><a class="top" href="<?php echo $comment; ?>"><?php echo $text_comment; ?></a><?php if($total_comment){?><i class="total_comment"><?php echo $total_comment?></i><?php }?></li>]]></add>
+		</operation>
+	</file>
+</modification>

@@ -1,0 +1,55 @@
+<modification>
+	<id>Extra Manager Menu Shortcut</id>
+	<version>1.0.0</version>
+	<vqmver>1.0.0</vqmver>
+	<author>ini.vn</author>
+	<file name="admin/controller/common/header.php">
+		<operation error="abort">
+			<search position="before"><![CDATA[$this->data['text_zone']]]></search>
+			<add><![CDATA[		$this->data['text_extra'] = $this->language->get('text_extra');
+			$this->data['text_support_online'] = $this->language->get('text_support_online');
+			$this->data['text_footer'] = $this->language->get('text_footer');
+			$this->data['text_featured'] = $this->language->get('text_featured');
+			$this->data['text_mod_banner'] = $this->language->get('text_mod_banner');
+			$this->data['text_ads'] = $this->language->get('text_ads');
+			]]></add>
+		</operation>
+		<operation error="abort">
+			<search position="before"><![CDATA[$this->data['zone']]]></search>
+			<add><![CDATA[			$this->data['support_online'] = $this->url->link('catalog/support_online', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['featured'] = $this->url->link('module/featured', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['mod_banner'] = $this->url->link('module/banner', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['footer'] = $this->url->link('module/footer', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['ads'] = $this->url->link('module/ads', 'token=' . $this->session->data['token'], 'SSL');
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/*/common/header.php">
+		<operation error="abort">
+			<search position="before"><![CDATA[$_['text_zone']]]></search>
+			<add><![CDATA[$_['text_extra']               = 'Tiện ích';
+			$_['text_support_online']               = 'Support Online';
+			$_['text_featured']               = 'Sản phẩm nổi bật';
+			$_['text_mod_banner']               = 'Banner';
+			$_['text_footer']               = 'Footer';
+			$_['text_ads']               = 'Quảng cáo';
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/view/template/common/header.tpl">
+		<operation error="abort">
+			<search position="before"><![CDATA[<a class="top"><?php echo $text_extension; ?></a>]]></search>
+			<add><![CDATA[          <li id="extra"><a class="top"><?php echo $text_extra; ?></a>
+        <ul>
+          <li><a href="<?php echo $support_online; ?>"><?php echo $text_support_online; ?></a></li>
+		  <li><a href="<?php echo $featured; ?>"><?php echo $text_featured; ?></a></li>
+		  <li><a href="<?php echo $mod_banner; ?>"><?php echo $text_mod_banner; ?></a></li>
+		  <li><a href="<?php echo $ads; ?>"><?php echo $text_ads; ?></a></li>
+		  <li><a href="<?php echo $footer; ?>"><?php echo $text_footer; ?></a></li>
+        </ul>
+      </li>]]></add>
+		</operation>
+	</file>
+	<!--CATELOG-->
+	
+</modification>

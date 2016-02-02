@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+    <id>Replace Old Code</id>
+    <version>1</version>
+    <vqmver>2.3.2</vqmver>
+    <author>codek365@gmail.com</author>
+
+        <file name="catalog/view/theme/*/*/common/header.tpl">
+            <operation>
+                <search position="replace"><![CDATA[  <meta name="robots" content="index, follow">
+
+                ]]></search>
+
+                <add><![CDATA[<?php 
+if (strpos($_SERVER['SERVER_NAME'],'vietfuntravel.com.vn') == false) {?>
+<meta name="robots" content="noindex, follow">
+<meta name="robots" content="index, nofollow">
+<meta name="robots" content="noindex, nofollow">
+<?php }?>
+
+                    ]]></add>
+            </operation>
+            
+        </file> 
+    </modification>

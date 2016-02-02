@@ -1,0 +1,6 @@
+<?php echo $header; ?>
+<?php echo $content_top; ?>
+<?php echo $column_left; ?><?php echo $column_right; ?>
+<div id="content" class="home">
+<?php echo $content_bottom; ?></div>
+<?php echo $footer; ?>
